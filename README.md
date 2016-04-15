@@ -1,2 +1,2 @@
-# codewars
-Solutions to codewars katas
+# Codewars
+Solutions to codewars katas, each language has an own folder. 

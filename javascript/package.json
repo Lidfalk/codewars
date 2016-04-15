@@ -1,0 +1,13 @@
+{
+  "name": "Codewars",
+  "description": "Codewars solution",
+  "version": "1.0.0",
+  "publisher": "lidfalk",
+  "dependencies": {},
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^2.7.0",
+    "eslint-config-airbnb": "^6.2.0",
+    "eslint-plugin-react": "^4.2.3"
+  }
+}
