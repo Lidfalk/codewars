@@ -3,8 +3,8 @@
 const assert = require('chai').assert;
 const kata = require('../kata');
 
-describe('Codewars', () => {
-  it('Unique In Order 1', () => {
+describe('Codewars katas', () => {
+  it('Unique In Order', () => {
     assert.deepEqual(['A', 'B', 'C', 'D', 'A', 'B'], kata.uniqueInOrder('AAAABBBCCDAABBB'));
     assert.deepEqual(['A', 'B', 'C', 'c', 'A', 'D'], kata.uniqueInOrder('ABBCcAD'));
     assert.deepEqual([1, 2, 3], kata.uniqueInOrder([1, 2, 2, 3, 3]));
@@ -16,6 +16,38 @@ describe('Codewars', () => {
     assert.equal(kata.myParseInt('08'), 8);
     assert.isOk(isNaN(kata.myParseInt('5 friends')));
     assert.isOk(isNaN(kata.myParseInt('16.5')));
+  });
+  
+  it('Is Isogram', () => {
+    assert.equal(kata.isIsogram('ABCD'), true)
+    assert.equal(kata.isIsogram("Dermatoglyphics"), true );
+    assert.equal(kata.isIsogram("isogram"), true );
+    assert.equal(kata.isIsogram("aba"), false, "same chars may not be adjacent" );
+    assert.equal(kata.isIsogram("moOse"), false, "same chars may not be same case" );
+    assert.equal(kata.isIsogram("isIsogram"), false );
+    assert.equal(kata.isIsogram(""), true, "an empty string is a valid isogram" );
+  });
+  
+  it('Get Sum', () => {
+    assert.equal(-1, kata.GetSum(0, -1));
+    assert.equal( 1, kata.GetSum(0, 1));
+    assert.equal( 2, kata.GetSum(-1, 2));
+    assert.equal(-3, kata.GetSum(-2, -1));
+    assert.equal(-9, kata.GetSum(-2, -4));
+  });
+  
+  it('People In Line', () => {
+    assert.equal("YES", kata.tickets([25, 25, 50, 50]));
+    assert.equal("NO", kata.tickets([25, 100]));
+    assert.equal("YES", kata.tickets([25, 50, 25, 100]));
+  });
+
+  it('Should print diamond', () => {
+    assert.equal(kata.diamond(3), " *\n***\n *\n")
+    assert.equal(kata.diamond(5), "  *\n ***\n*****\n ***\n  *\n")
+    assert.equal(kata.diamond(2), null)
+    assert.equal(kata.diamond(-3), null)
+    assert.equal(kata.diamond(0), null)
   });
 });
 
