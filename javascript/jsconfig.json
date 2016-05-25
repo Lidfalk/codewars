@@ -1,0 +1,7 @@
+// Configuration file to get typescript typings to work 
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs"
+    }
+}
