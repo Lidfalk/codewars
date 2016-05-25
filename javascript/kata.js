@@ -104,7 +104,69 @@ module.exports = {
         result += `, ${n[1]} and ${n.length - 2} others like this`; break;
     }
     return result;
+  },
+  // Should be 10 steps and return to the same point. Input will always be "correct"
+  isValidWalk: (walk) => {
+    if (walk.length !== 10) {
+      return false;
+    }
+    const xy = [0, 0];
+    for (let i = 0; i < walk.length; i++) {
+      switch (walk[i]) {
+        case 'n': xy[1]++; break;
+        case 'e': xy[0]++; break;
+        case 's': xy[1]--; break;
+        case 'w': xy[0]--; break;
+        default:
+          break;
+      }
+    }
+    return (xy[0] + xy[1]) === 0;
+  },
+  /**
+  * CSV Parser.  Takes a string as input and returns
+  * an array of arrays (for each row).
+  *
+  * @param input String, CSV input
+  * @param separator String, single character used to separate fields.
+  *        Defaults to ","
+  * @param quote String, single character used to quote non-simple fields.
+  *        Defaults to "\"".
+  */
+  parseCSV: (input, separator, quote) => {
+    const validSeparator = separator || ',';
+    const validQuote = quote || '"';
+    let word = '';
+    let row = [];
+    const output = [];
+    
+    for (let i = 0; i < input.length; i++) {
+      const element = input[i];
+      
+      switch (element) {
+        case validSeparator:
+          // if not escaped add word to row array
+          row.push(word);
+          word = ''; // reset word
+          break;
+        case validQuote:
+          // Change the state
+          
+          break;
+        case '\n':
+          // add the row to the outout and continue with next row
+          output.push(row);
+          row = []; // reset row
+          break;
+        default:
+          // standard element just add to the current word
+          word += element;
+          break;
+      }
+    }
+    return output;
   }
 };
 
-
+const input = '1,2,3\n4,5,6';
+module.exports.parseCSV(input);
